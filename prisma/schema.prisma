@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid()) @map("_id")
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid()) @map("_id")
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid()) @map("_id")
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  Blog          Blog[]
+  Comment       Comment[]
+}
+
+model VerificationToken {
+  identifier String   @id @map("_id")
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Category {
+  id          String  @id @default(cuid()) @map("_id")
+  categoryNum String  @unique
+  label       String
+  image       String?
+  alt         String
+  background  String
+  color       String
+  link        String
+  Blogs       Blog[]
+}
+
+model Blog {
+  id             String    @id @default(cuid()) @map("_id")
+  createdAt      DateTime  @default(now())
+  blogNum        String    @unique
+  label          String
+  description    String
+  image          String?
+  views          Int       @default(0)
+  categoryNumber String
+  categoryType   Category  @relation(fields: [categoryNumber], references: [categoryNum])
+  userEmail      String
+  user           User      @relation(fields: [userEmail], references: [email])
+  comments       Comment[]
+}
+
+model Comment {
+  id          String   @id @default(cuid()) @map("_id")
+  createdAt   DateTime @default(now())
+  description String
+  userEmail   String
+  user        User     @relation(fields: [userEmail], references: [email])
+  blogLabel   String
+  blog        Blog     @relation(fields: [blogLabel], references: [blogNum])
+}
