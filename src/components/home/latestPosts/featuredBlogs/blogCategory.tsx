@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { fontMedium, fontSemibold } from "../../../style";
-import { categoryProps } from "@/components/types";
+import { categoryProps, getCategoryStyles } from "@/components/types";
 import { getCategories } from "../../categories";
 
 export default async function BlogCategory() {
@@ -17,12 +17,15 @@ export default async function BlogCategory() {
             </h2>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-10'>
-                {categoryLinks?.map((categoryLink: categoryProps) => (
-                    <Link key={categoryLink.id} href={categoryLink.link} className={`flex items-center justify-center p-3 rounded-lg ${categoryLink.background}`}>
-                        <Image src={categoryLink.image} alt={categoryLink.alt} width={18} height={18} className='mr-1' />
-                        <h3 className={`${fontMedium.className} text-xs ${categoryLink.color} dark:${categoryLink.color}`}>{categoryLink.label}</h3>
-                    </Link>
-                ))}
+                {categoryLinks?.map((categoryLink: categoryProps, index: number) => {
+                    const { bgColor, textColor } = getCategoryStyles(index);
+                    return (
+                        <Link aria-label="category button" key={categoryLink.id} href={categoryLink.link} className={`flex items-center justify-center p-3 rounded-lg ${bgColor}`}>
+                            <Image src={categoryLink.image} alt={categoryLink.alt} width={18} height={18} className='mr-1' />
+                            <h3 className={`${fontMedium.className} text-xs ${textColor}`}>{categoryLink.label}</h3>
+                        </Link>
+                    );
+                })}
             </div>
         </>
     )

@@ -8,7 +8,7 @@ export default async function Compose() {
     return (
         !session ? (
             <div className="w-[100%] h-[450px] flex items-center justify-center">
-                <Link href="/login" className="bg-blue-700 hover:bg-blue-800 text-sm text-white px-5 py-2 rounded-lg">
+                <Link href="/login" aria-label="Login button" className="bg-blue-700 hover:bg-blue-800 text-sm text-white px-5 py-2 rounded-lg">
                     Login for Posting Your Blog
                 </Link>
             </div>

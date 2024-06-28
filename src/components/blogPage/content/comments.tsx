@@ -27,7 +27,7 @@ export default async function CommentSection({ blogNum }: { blogNum: string }) {
     return (
         <section>
             {!session ? (
-                <Link href="/login" className={`${linkStyle} bg-blue-700 hover:bg-blue-800 text-sm text-white px-5 py-2 rounded-lg`}>
+                <Link href="/login" aria-label="Login button" className={`${linkStyle} bg-blue-700 hover:bg-blue-800 text-sm text-white px-5 py-2 rounded-lg`}>
                     Login for Posting Comment
                 </Link>
             ) : (
@@ -39,7 +39,7 @@ export default async function CommentSection({ blogNum }: { blogNum: string }) {
                     <form action={postFormData} className="grid w-full gap-2 mb-4">
                         <input name="blogLabel" defaultValue={blogNum} hidden />
                         <Textarea id="description" name="description" placeholder="Type your comment here." required />
-                        <Button type="submit" className="bg-purple-800 hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-900 text-white rounded-md">Send</Button>
+                        <Button type="submit" aria-label="Submit button" className="bg-purple-800 hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-900 text-white rounded-md">Send</Button>
                     </form>
 
                     <TotalComments blogNum={blogNum} />

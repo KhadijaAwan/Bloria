@@ -55,7 +55,7 @@ export default function FileComponent({ options, setOptions, file, setFile, setB
 
     return (
         <div className="my-8 flex gap-10">
-            <Button className="rounded-full px-2" size="sm" onClick={() => setOptions(!options)}><Plus className="w-[18px]" /></Button>
+            <Button className="rounded-full px-2" size="sm" onClick={() => setOptions(!options)} aria-label="Options button"><Plus className="w-[18px]" /></Button>
 
             {options && <div className="flex gap-3">
                 <input
@@ -64,9 +64,9 @@ export default function FileComponent({ options, setOptions, file, setFile, setB
                     onChange={handleFileChange}
                     className="hidden"
                 />
-                <Button className="rounded-full px-2 bg-blue-800 hover:bg-blue-900 text-white" size="sm"><label htmlFor="image"><ImageUp className="w-[18px]" /></label></Button>
-                <Button className="rounded-full px-2 bg-orange-600 hover:bg-orange-700 text-white" size="sm"><Upload className="w-[18px]" /></Button>
-                <Button className="rounded-full px-2 bg-purple-800 hover:bg-purple-900 text-white" size="sm"><Video className="w-[18px]" /></Button>
+                <Button className="rounded-full px-2 bg-blue-800 hover:bg-blue-900 text-white" size="sm" aria-label="Image button"><label htmlFor="image"><ImageUp className="w-[18px]" /></label></Button>
+                <Button className="rounded-full px-2 bg-orange-600 hover:bg-orange-700 text-white" size="sm" aria-label="Image button"><Upload className="w-[18px]" /></Button>
+                <Button className="rounded-full px-2 bg-purple-800 hover:bg-purple-900 text-white" size="sm" aria-label="Image button"><Video className="w-[18px]" /></Button>
             </div>}
         </div>
     )

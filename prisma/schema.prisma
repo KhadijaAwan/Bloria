@@ -60,8 +60,6 @@ model Category {
   label       String
   image       String?
   alt         String
-  background  String
-  color       String
   link        String
   Blogs       Blog[]
 }

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { fontMedium, fontSemibold } from "../style";
-import { categoryProps } from "../types";
+import { categoryProps, getCategoryStyles } from "../types";
 
 export const getCategories = async () => {
     const response = await fetch(`${process.env.NEXTAUTH_URL}/api/category`, { cache: "no-store" });
@@ -18,12 +18,16 @@ export default async function Categories() {
             </h2>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 px-10 gap-3'>
-                {categoryLinks?.map((categoryLink: categoryProps) => (
-                    <Link key={categoryLink.id} href={categoryLink.link} className={`flex items-center justify-center p-3 rounded-lg ${categoryLink.background}`}>
-                        <Image src={categoryLink.image} alt={categoryLink.alt} width={20} height={20} className='mr-2' />
-                        <h3 className={`${fontMedium.className} text-sm ${categoryLink.color} dark:${categoryLink.color}`}>{categoryLink.label}</h3>
-                    </Link>
-                ))}
+                {categoryLinks?.map((categoryLink: categoryProps, index: number) => {
+                    const { bgColor, textColor } = getCategoryStyles(index);
+                    return (
+                        <Link aria-label="category button" key={categoryLink.id} href={categoryLink.link} className={`flex items-center justify-center p-3 rounded-lg ${bgColor}`}>
+                            <Image src={categoryLink.image} alt={categoryLink.alt} width={20} height={20} className='mr-2' />
+                            <h3 className={`${fontMedium.className} text-sm ${textColor}`}>{categoryLink.label}</h3>
+                        </Link>
+                    );
+                }
+                )}
             </div>
         </section>
     )

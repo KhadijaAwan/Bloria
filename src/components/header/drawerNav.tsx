@@ -16,14 +16,14 @@ const DrawerNav: React.FC<DrawerNavProps> = ({ open, onClose }) => {
             <DrawerContent onClose={onClose}>
                 <DrawerHeader>
                     <div className='flex flex-col justify-center pt-4'>
-                        <Link href="/" className={`${fontMedium.className} mb-5 py-1 text-base text-purple-900 dark:text-purple-900`}>Home</Link>
+                        <Link href="/" aria-label="Home button" className={`${fontMedium.className} mb-5 py-1 text-base text-purple-900 dark:text-purple-900`}>Home</Link>
                         <AuthLink />
                     </div>
                 </DrawerHeader>
                 <DrawerFooter>
                     <div className='flex justify-center mt-1 mb-3'>
                         {socialLinks.map((socialLink) => (
-                            <Link key={socialLink.id} href={socialLink.href}>
+                            <Link key={socialLink.id} href={socialLink.href} aria-label="social button">
                                 <Image src={socialLink.image} alt={socialLink.alt} width={30} height={30} className='mr-2' />
                             </Link>
                         ))}

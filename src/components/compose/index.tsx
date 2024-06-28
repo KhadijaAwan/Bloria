@@ -45,7 +45,7 @@ export default function ComposeSection() {
 
             <ReactQuill theme="bubble" value={value} onChange={(inputValue) => setValue(inputValue)} placeholder="Compose Your Blog Here..." />
 
-            <Button className="my-12 py-2 w-[160px] mx-auto lg:mx-0 bg-purple-700 hover:bg-purple-800 dark:bg-purple-800 dark:hover:bg-purple-700 dark:text-gray-50 text-sm" disabled={!value} onClick={postBlog}>Publish Blog</Button>
+            <Button aria-label="Publish Blog button" className="my-12 py-2 w-[160px] mx-auto lg:mx-0 bg-purple-700 hover:bg-purple-800 dark:bg-purple-800 dark:hover:bg-purple-700 dark:text-gray-50 text-sm" disabled={!value} onClick={postBlog}>Publish Blog</Button>
         </section>
     )
 }

@@ -80,6 +80,15 @@ export type FileComponentProps = {
     setBlogImage: (downloadURL: string) => void;
 };
 
+export const getCategoryStyles = (index: number) => {
+    const bgColorClasses = ["bg-gray-100", "bg-yellow-100", "bg-red-100", "bg-blue-100", "bg-pink-100", "bg-green-100"];
+    const textColorClasses = ["text-gray-700", "text-yellow-700", "text-red-700", "text-blue-700", "text-pink-700", "text-green-700"];
+    return {
+        bgColor: bgColorClasses[index] || "",
+        textColor: textColorClasses[index] || "",
+    };
+};
+
 export const blogNumModifier = (word: string) =>
     word
         .toLowerCase()

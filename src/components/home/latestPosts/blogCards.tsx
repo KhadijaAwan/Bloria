@@ -34,11 +34,11 @@ export default async function BlogCards({ pageNumber, categoryType }: blogCardsP
                                 <div className="flex flex-col lg:p-3 lg:mt-[-8px] items-center lg:items-start text-center lg:text-left">
                                     <div className="flex gap-4 text-xs mb-4 mt-6 lg:mt-0">
                                         <h3>{formatDate(blog.createdAt)} {" "} - </h3>
-                                        <h3 className={`uppercase text-orange-600 dark:text-orange-400 ${fontSemibold.className}`}>{blog.categoryNumber}</h3>
+                                        <h3 className={`uppercase text-orange-700 dark:text-orange-400 ${fontSemibold.className}`}>{blog.categoryNumber}</h3>
                                     </div>
                                     <h3 className={`${fontSemibold.className} text-base`}>{blog.label}</h3>
                                     <div className="text-xs lg:text-justify my-3 text-gray-800 dark:text-gray-300 leading-[20px]" dangerouslySetInnerHTML={{ __html: blog.description.substring(0, 200) }} />
-                                    <Link href={`/blog/${blog.blogNum}`} className={`w-max text-[13px] text-blue-800 dark:text-blue-500 ${fontMedium.className}`} >Read More</Link>
+                                    <Link href={`/blog/${blog.blogNum}`} className={`w-max text-[13px] text-blue-800 dark:text-blue-500 ${fontMedium.className}`} aria-label="blog button">Read More</Link>
                                 </div>
                             </div>
                         </div>

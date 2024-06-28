@@ -15,7 +15,7 @@ export default function FooterLink({ getLinks }: LinkProps) {
     return (
         <section className="flex flex-col">
             {getLinks.map((getLink: GetLinksProps) => (
-                <Link key={getLink.id} href={getLink.href} className={`${linkStyle} text-xs lg:text-[13px] mb-3 text-gray-800 dark:text-gray-300`}>{getLink.title}</Link>
+                <Link key={getLink.id} href={getLink.href} className={`${linkStyle} text-xs lg:text-[13px] mb-3 text-gray-800 dark:text-gray-300`} aria-label="Footer button">{getLink.title}</Link>
             ))}
         </section>
     )

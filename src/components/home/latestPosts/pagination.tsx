@@ -13,8 +13,8 @@ export default function Pagination({ pageNumber, previousBlogs, nextBlogs }: Pag
 
     return (
         <section className="flex justify-between my-6">
-            <Button className="dark:bg-purple-900 bg-purple-700 text-white hover:bg-purple-800 dark:hover:bg-purple-800 w-[90px]" size="sm" onClick={() => router.push(`?pageNumber=${Number(pageNumber) - 1}`)} disabled={!previousBlogs}>Previous</Button>
-            <Button className="dark:bg-purple-900 bg-purple-700 text-white hover:bg-purple-800 dark:hover:bg-purple-800 w-[90px]" size="sm" onClick={() => router.push(`?pageNumber=${Number(pageNumber) + 1}`)} disabled={!nextBlogs}>Next</Button>
+            <Button aria-label="previous page button" className="dark:bg-purple-900 bg-purple-700 text-white hover:bg-purple-800 dark:hover:bg-purple-800 w-[90px]" size="sm" onClick={() => router.push(`?pageNumber=${Number(pageNumber) - 1}`)} disabled={!previousBlogs}>Previous</Button>
+            <Button aria-label="next page button" className="dark:bg-purple-900 bg-purple-700 text-white hover:bg-purple-800 dark:hover:bg-purple-800 w-[90px]" size="sm" onClick={() => router.push(`?pageNumber=${Number(pageNumber) + 1}`)} disabled={!nextBlogs}>Next</Button>
         </section>
     )
 }

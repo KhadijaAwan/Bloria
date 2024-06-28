@@ -7,7 +7,7 @@ import { fontMedium } from "../style";
 export default function FooterContent() {
     return (
         <section className="flex flex-col gap-4 w-[100%] lg:w-[92%] lg:pr-[8%]">
-            <Link className="flex gap-1 dark:gap-2" href="/">
+            <Link className="flex gap-1 dark:gap-2" href="/" aria-label="Home button">
                 <Image src={logoImage} alt="bloria-logo" className="rounded-full" width={30} height={30} />
                 <h3 className={`${fontMedium.className} text-lg text-purple-900 dark:text-purple-500 tracking-wider`}>Bloria Corner</h3>
             </Link>
@@ -16,7 +16,7 @@ export default function FooterContent() {
 
             <div className='flex justify-center lg:justify-start'>
                 {socialLinks.map((socialLink) => (
-                    <Link key={socialLink.id} href={socialLink.href}>
+                    <Link key={socialLink.id} href={socialLink.href} aria-label="Social button">
                         <Image src={socialLink.image} alt={socialLink.alt} width={28} height={28} className='mr-2 rounded-full' />
                     </Link>
                 ))}
