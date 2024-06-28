@@ -27,9 +27,11 @@ export default async function CommentSection({ blogNum }: { blogNum: string }) {
     return (
         <section>
             {!session ? (
-                <Link href="/login" aria-label="Login button" className={`${linkStyle} bg-blue-700 hover:bg-blue-800 text-sm text-white px-5 py-2 rounded-lg`}>
-                    Login for Posting Comment
-                </Link>
+                <div className="flex justify-center md:justify-start">
+                    <Link href="/login" aria-label="Login button" className={`${linkStyle} bg-blue-700 hover:bg-blue-800 text-sm text-white px-5 py-2 rounded-lg`}>
+                        Login for Posting Comment
+                    </Link>
+                </div>
             ) : (
                 <>
                     <h2 className={`${fontSemibold.className} text-lg lg:text-xl mb-5`} style={{ lineHeight: '1.6' }}>
